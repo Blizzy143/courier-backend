@@ -1,5 +1,6 @@
-const { User, Session } = require("../models");
-
+const db= require("../models");
+const User = db.user;
+const Session = db.session;
 
 const { encrypt, getSalt, hashPassword } = require("../authentication/crypto");
 
