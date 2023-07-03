@@ -14,7 +14,25 @@ exports.create = async (req, res) => {
       message:
         error.message || "Some error occurred while creating the User.",
     });
-  } else if (req.body.email === undefined) {
+  }
+
+  else if (req.body.lastName === undefined) {
+    const error = new Error("Name cannot be empty for user!");
+    error.statusCode = 400;
+    res.status(400).send({
+      message:
+        error.message || "Some error occurred while creating the User.",
+    });
+  }
+  else if (req.body.user_role === undefined) {
+    const error = new Error("User role cannot be empty for user!");
+    error.statusCode = 400;
+    res.status(400).send({
+      message:
+        error.message || "Some error occurred while creating the User.",
+    });
+  }
+  else if (req.body.email === undefined) {
     error.statusCode = 400;
     res.status(400).send({
       message:
@@ -27,7 +45,7 @@ exports.create = async (req, res) => {
       message:
         error.message || "Some error occurred while creating the User.",
     });
-  }else if (req.body.number === undefined) {
+  } else if (req.body.number === undefined) {
     const error = new Error("Mobile number cannot be empty for user!");
     error.statusCode = 400;
     res.status(400).send({
@@ -36,40 +54,40 @@ exports.create = async (req, res) => {
     });
   }
 
-  
-        let salt = await getSalt();
-        let hash = await hashPassword(req.body.password, salt);
 
-        // Create a User
-        const user = {
-          firstName: req.body.firstName,
-          lastName: req.body.lastName,
-          number: req.body.number,
-          email: req.body.email,
-          password: hash,
-          salt: salt,
-          user_role: req.body.user_role?req.body.user_role:"user",
-        };
+  let salt = await getSalt();
+  let hash = await hashPassword(req.body.password, salt);
 
-        // Save User in the database
-        await User.create(user)
-          .then(async (data) => {
-              res.send(data);
-          })
-          .catch((err) => {
-            console.log(err.code);
-            if (err.name === 'SequelizeUniqueConstraintError') {
-              res.status(409).send({
-                message: "Email already exists",
-              });
-              return;
-            }
-            res.status(500).send({
-              message:
-                err.message || "Some error occurred while creating the User.",
-            });
-          });
-      
+  // Create a User
+  const user = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    number: req.body.number,
+    email: req.body.email,
+    password: hash,
+    salt: salt,
+    user_role: req.body.user_role ? req.body.user_role : "user",
+  };
+
+  // Save User in the database
+  await User.create(user)
+    .then(async (data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      console.log(err.code);
+      if (err.name === 'SequelizeUniqueConstraintError') {
+        res.status(409).send({
+          message: "Email already exists",
+        });
+        return;
+      }
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while creating the User.",
+      });
+    });
+
 };
 
 // Retrieve all Users from the database.
