@@ -9,5 +9,5 @@ module.exports = (app) => {
   // Logout
   router.post("/logout", auth.logout);
 
-  app.use("/courierapi", router);
+  app.use("/courierapi/auth", router);
 };
