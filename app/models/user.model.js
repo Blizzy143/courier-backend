@@ -13,6 +13,7 @@ module.exports = (sequelize, Sequelize) => {
     email: {
       type: Sequelize.STRING,
       allowNull: false,
+      unique:true
     },
     number: {
       type: Sequelize.STRING,
@@ -25,6 +26,7 @@ module.exports = (sequelize, Sequelize) => {
     status: {
       type: Sequelize.STRING,
       allowNull: false,
+      defaultValue: "active",
     },
     password: {
       type: Sequelize.BLOB,
