@@ -29,6 +29,7 @@ app.get("/courierapi", (req, res) => {
 
 require("./app/routes/auth.routes.js")(app);
 require("./app/routes/user.routes")(app);
+require("./app/routes/company.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;

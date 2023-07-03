@@ -1,40 +1,46 @@
-const { saltSize, keySize } = require("../authentication/crypto");
-
 module.exports = (sequelize, Sequelize) => {
-  const User = sequelize.define("user", {
-    firstName: {
+  const Ticket = sequelize.define("service_ticket", {
+    pickup_time: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    lastName: {
+    bill_pickup: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    email: {
+    bill_delivery: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    number: {
+    package_id: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    user_role: {
+    est_delivery_time: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    status: {
+    est_blocks: { 
       type: Sequelize.STRING,
       allowNull: false,
     },
-    password: {
-      type: Sequelize.BLOB,
+    quoted_price: {
+      type: Sequelize.STRING,
       allowNull: false,
     },
-    salt: {
-      type: Sequelize.BLOB,
+    assigned_time: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    pickup_time: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    delivery_time: {
+      type: Sequelize.STRING,
       allowNull: false,
     },
   });
 
-  return User;
+  return Ticket;
 };
