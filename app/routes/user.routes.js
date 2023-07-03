@@ -6,6 +6,12 @@ module.exports = (app) => {
   // Create a new User
   router.post("/users/", User.create);
 
+  // Create a new clerk
+  router.post("/users/clerk", User.createClerk);
+
+  // Get all clerks
+  router.get("/users/clerk", User.getAllClerks);
+
   // Retrieve all Users
   router.get("/users/", User.findAll);
 
