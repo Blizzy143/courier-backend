@@ -20,6 +20,8 @@ git clone https://github.com/OC-ComputerScience/courier-backend.git
 npm install
 ```
 
+---
+
 3. Configure **Apache** to point to **Node** for API requests.
 
    - We recommend using XAMPP to serve this project.
