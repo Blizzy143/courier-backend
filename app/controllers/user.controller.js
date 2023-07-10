@@ -320,3 +320,19 @@ exports.deleteAll = (req, res) => {
       });
     });
 };
+
+
+exports.getAllCouriers = (req, res) => {
+  const id = req.query.id;
+  var condition = id ? { id: { [Op.like]: `%${id}%` }, user_role: "courier" } : { user_role: "courier" };
+  User.findAll({ where: condition })
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({
+        message: err.message || "Some error occurred while retrieving users.",
+      });
+    });
+}
