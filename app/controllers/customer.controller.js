@@ -26,6 +26,7 @@ exports.create = async (req, res) => {
           });
 };
 
+
 // Retrieve all Customers from the database.
 exports.findAll = (req, res) => {
   const id = req.query.id;
