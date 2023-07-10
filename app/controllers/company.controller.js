@@ -10,6 +10,10 @@ exports.create = async (req, res) => {
           price_per_block: req.body.price_per_block,
           time_per_block: req.body.time_per_block,
           ontime_bonus: req.body.ontime_bonus,
+          number : req.body.number,
+          email : req.body.email,
+          status : req.body.status,
+          description : req.body.description,
           name: req.body.name,
         };
 
