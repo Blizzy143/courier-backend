@@ -1,5 +1,6 @@
 const db = require("../models");
 const Ticket = db.service_ticket;
+const Op = db.Sequelize.Op;
 
 // Create and Save a new Ticket
 exports.create = async (req, res) => {
@@ -48,6 +49,23 @@ exports.findAll = (req, res) => {
     .catch((err) => {
       res.status(500).send({
         message: err.message || "Some error occurred while retrieving tickets.",
+      });
+    });
+};
+
+exports.findAllByCourier = (req, res) => {
+  const id = req.params.id;
+  var condition = id ? { assignedToId: { [Op.like]: `%${id}%` } } : null;
+
+  Ticket.findAll({ where: condition , include: ["delivery_customer", "pickup_customer", "creator", "assigned_to"]})
+
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+        err.message || "Some error occurred while retrieving tickets.",
       });
     });
 };
