@@ -41,7 +41,7 @@ exports.findAll = (req, res) => {
   const id = req.query.id;
   var condition = id ? { id: { [Op.like]: `%${id}%` } } : null;
 
-  Ticket.findAll({ where: condition })
+  Ticket.findAll({ where: condition , include: ["delivery_customer", "pickup_customer", "creator", "assigned_to"]})
     .then((data) => {
       res.send(data);
     })

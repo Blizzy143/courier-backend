@@ -36,6 +36,11 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       allowNull: true,
     },
+    status: {
+      type: Sequelize.STRING,
+      allowNull: true,
+      defaultValue: "created",
+    },
   });
 
   return Ticket;
