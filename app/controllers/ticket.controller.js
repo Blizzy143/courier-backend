@@ -74,7 +74,7 @@ exports.findAllByCourier = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  Ticket.findByPk(id)
+  Ticket.findByPk(id,{include: ["delivery_customer", "pickup_customer", "creator", "assigned_to"]})
     .then((data) => {
       if (data) {
         res.send(data);
