@@ -28,7 +28,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       allowNull: true,
     },
-    pickup_time: {
+    picked_up_time: {
       type: Sequelize.STRING,
       allowNull: true,
     },
