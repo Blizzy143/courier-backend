@@ -41,6 +41,11 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: true,
       defaultValue: "created",
     },
+    bonus : {
+      type: Sequelize.STRING,
+      allowNull: true,
+      defaultValue: "0",
+    },
   });
 
   return Ticket;
