@@ -16,7 +16,6 @@ exports.create = async (req, res) => {
           assigned_time: req.body.assigned_time,
           pickup_time: req.body.pickup_time,
           delivery_time: req.body.delivery_time,
-
           deliveryCustomerId: req.body.deliveryCustomerId,
           pickupCustomerId: req.body.pickupCustomerId,
           creatorId: req.body.creatorId,
