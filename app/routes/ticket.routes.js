@@ -12,7 +12,11 @@ module.exports = (app) => {
   // Retrieve all Tickets by courier
 
   router.get("/tickets/courier/:id", Ticket.findAllByCourier);
-  
+
+  // Retrieve all Tickets by customer
+
+  router.get("/tickets/customer/:id", Ticket.findAllByCustomer);
+
   // Retrieve a single Ticket with id
   router.get("/tickets/:id", Ticket.findOne);
 

@@ -69,6 +69,22 @@ exports.findAllByCourier = (req, res) => {
     });
 };
 
+exports.findAllByCustomer = (req, res) => {
+  const id = req.params.id;
+
+  Ticket.findAll({ where: {pickupCustomerId: id} , include: ["delivery_customer", "pickup_customer", "creator", "assigned_to"]})
+  .then((data) => {
+    res.send(data);
+  })
+  .catch((err) => {
+    res.status(500).send({
+      message:
+      err.message || "Some error occurred while retrieving tickets.",
+    });
+  });
+};
+
+
 // Find a single Ticket with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
