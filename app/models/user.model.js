@@ -26,7 +26,7 @@ module.exports = (sequelize, Sequelize) => {
     status: {
       type: Sequelize.STRING,
       allowNull: false,
-      defaultValue: "active",
+      defaultValue: "Available",
     },
     password: {
       type: Sequelize.BLOB,
