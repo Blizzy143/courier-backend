@@ -258,7 +258,14 @@ exports.findByEmail = (req, res) => {
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  User.update(req.body, {
+  User.update({id : req.body.id,
+     firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      number: req.body.number,
+      email: req.body.email,
+      user_role: req.body.user_role,
+      status: req.body.status,
+    }, {
     where: { id: id },
   })
     .then((number) => {
